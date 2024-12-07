@@ -20,12 +20,36 @@ class LoginPage extends StatelessWidget {
               ),
             )),
             Expanded(
-                child: Container(
-              color: Colors.red,
-              child: Center(
-                child: Text('bottom'),
+              child: Container(
+                color: Colors.red,
+                //继续嵌套使用Column组件来布局账号密码输入框、登录按钮、注册按钮这三个组件
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: <Widget>[
+                    Column(
+                      children: <Widget>[
+                        Container(
+                          child: Text('邮箱'),
+                          color: Colors.brown,
+                        ),
+                        Container(
+                          child: Text('密码'),
+                          color: Colors.brown,
+                        )
+                      ],
+                    ),
+                    Container(
+                      child: Text('登录按钮'),
+                      color: Colors.brown,
+                    ),
+                    Container(
+                      child: Text('注册提示'),
+                      color: Colors.brown,
+                    )
+                  ],
+                ),
               ),
-            )),
+            ),
           ],
         ),
       ),
