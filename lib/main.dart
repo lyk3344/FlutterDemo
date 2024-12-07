@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart'; //Material Design设计风格的基础包，里面有Text,Icon，Image,Row,Column,Decoration(装饰器)，动画组件等，可以理解为网页中的按钮、标题、选项框等组件库
 import 'package:test1/pages/login.dart';
 
 // void main() {
@@ -10,13 +10,29 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   // This widget is the root of your application.
+  //为了在整个应用中使用同一套颜色和字体样式，可以使用“主题”这种方式
+  //定义一个主题后，就可以在我们自己的Widget中使用它，Flutter提供的Material Widgets将使主题为AppBars、Buttons、Checkboxes等设置背景颜色和字体样式
+  //创建主题的方法是将ThemeData提供给MaterialApp构造函数，这样就可以在整个应用程序中共享包含颜色和字体样式的主题。
+  //如果没有提供主题，Flutter将创建一个默认主题
   @override
   Widget build(BuildContext context) {
+    final appName = '自定义主题';
+
+    //使用Material设计风格的应用，里面包含了其所需要的基本控件
+    //一个完整的Flutter项目就是从MaterialApp这个主组件开始的
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: appName,
+      //如果我们想在应用程序的某一部分使用特殊的颜色，那么就需要覆盖全局的主题
+      //有两种方法：创建特有的主题数据或扩展父主题
+      //主题配置
       theme: ThemeData(
+        //应用程序整体主题的亮度
+        brightness: Brightness.light,
+        //App主要部分的背景色
+        primaryColor: Colors.lightGreen[600],
+        //前景色（文本、按钮等）
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+        // useMaterial3: true,
       ),
       home: LoginPage(),
     );
