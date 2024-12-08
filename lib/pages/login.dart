@@ -13,12 +13,17 @@ class LoginPage extends StatelessWidget {
           children: <Widget>[
             //利用 Expanded组件让两个子组件都能占满整个屏幕
             Expanded(
-                child: Container(
-              color: Colors.blue,
-              child: Center(
-                child: Text('top'),
+              child: Container(
+                color: Colors.blue,
+                //FractionallySizedBox组件能够按照百分比来布局组件
+                //通过传入widthFactor和heightFactor参数，可以让Image组件按照父容器的大小来布局
+                child: FractionallySizedBox(
+                  child: Image.asset('assets/images/mark.png'),
+                  widthFactor: 0.8,
+                  heightFactor: 0.8,
+                ),
               ),
-            )),
+            ),
             Expanded(
               child: Container(
                 color: Colors.red,
@@ -31,18 +36,24 @@ class LoginPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
                     //Column布局的输入框文本组件是居中对齐的
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          left: 24, right: 24, bottom: 12),
+                    const Padding(
+                      padding: EdgeInsets.only(left: 24, right: 24, bottom: 12),
                       child: Column(
                         children: <Widget>[
-                          Container(
-                            child: Text('邮箱'),
-                            color: Colors.brown,
+                          //将文本框替换为TextField,并增加装饰器，补充上作为提示的hintText
+                          TextField(
+                            decoration: InputDecoration(
+                              hintText: '请输入邮箱',
+                              labelText: '邮箱',
+                            ),
                           ),
-                          Container(
-                            child: Text('密码'),
-                            color: Colors.brown,
+                          TextField(
+                            decoration: InputDecoration(
+                              hintText: '请输入六位以上的密码',
+                              labelText: '密码',
+                            ),
+                            //将这个输入框的输入内容设置为不展示
+                            obscureText: true,
                           )
                         ],
                       ),
